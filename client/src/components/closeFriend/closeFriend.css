@@ -1,0 +1,23 @@
+.sidebarClosFriends {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebarClosFriend {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sidebarClosFriendImg {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebarClosFriendName {
+  cursor: pointer;
+}

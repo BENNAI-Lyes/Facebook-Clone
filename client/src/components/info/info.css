@@ -1,0 +1,26 @@
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoTitle {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 8px 0;
+}
+
+.infoItemKey {
+  font-size: 18px;
+  color: #333;
+}
+
+.infoItemValue {
+  font-size: 14px;
+  color: #555;
+}
