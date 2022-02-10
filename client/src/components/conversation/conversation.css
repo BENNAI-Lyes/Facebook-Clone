@@ -1,0 +1,40 @@
+.conversation {
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.conversationTop {
+  display: flex;
+}
+
+.conversationImg {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.conversationText {
+  background-color: #eeedec;
+  padding: 10px;
+  border-radius: 20px;
+  line-height: 1.5;
+  color: #555;
+  max-width: 400px;
+  margin: 0 10px;
+}
+.conversationBottom {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.conversation.owen {
+  align-items: flex-end;
+}
+
+.conversation.owen .conversationImg {
+  order: 2;
+}

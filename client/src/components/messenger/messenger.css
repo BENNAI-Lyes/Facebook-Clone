@@ -1,0 +1,101 @@
+.messenger {
+  height: calc(100vh - 50px);
+  display: flex;
+}
+.messengerMenu {
+  flex: 3;
+}
+.messengerSearch {
+  width: 90%;
+  border: none;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(211, 202, 202);
+  margin: 10px 0;
+  font-size: 16px;
+}
+.messengerSearch:focus {
+  outline: none;
+}
+
+.messengerBox {
+  flex: 6;
+}
+.messengerOnlineFriends {
+  flex: 3;
+}
+.messengerMenuWrapper,
+.messengerBoxWrapper,
+.messengerOnlineFriendsWrapper {
+  padding: 10px;
+  height: 100%;
+}
+
+.boxTop {
+  height: 70%;
+  overflow-y: scroll;
+}
+
+.boxBottom {
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.messageTextArea {
+  width: 70%;
+  height: 90%;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.messageTextArea:focus {
+  outline: none;
+}
+
+.sendMessege {
+  width: 80px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(to right, #43cea2, #185a9d);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.sendMessege:hover {
+  background: linear-gradient(to right, #185a9d, #43cea2);
+}
+
+.onlineFriend {
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.onlineFriend:hover {
+  background-color: #eeedec;
+}
+
+.onlineFriendLeft {
+  position: relative;
+  margin-right: 20px;
+}
+
+.onlineFriendImg {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.onlineFriendRight {
+  font-weight: 500;
+}
