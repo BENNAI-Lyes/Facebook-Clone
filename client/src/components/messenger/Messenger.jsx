@@ -1,9 +1,45 @@
 import "./messenger.css";
 import Topbar from "../topbar/Topbar";
-import MessengerFriend from "./messengerFriend/MessengerFriend";
+import MessengerConversation from "../messengerConversation/MessengerConversation";
 import Conversation from "../conversation/Conversation";
 
+import { AuthContext } from "../../context/AuthContext";
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+
 export default function Messenger() {
+  const { user } = useContext(AuthContext);
+
+  const [conversations, SetConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    try {
+      const fetchConversations = async () => {
+        const res = await axios.get("/api/conversation/" + user._id);
+        SetConversations(res.data);
+      };
+      fetchConversations();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (currentChat) {
+      try {
+        const fetchMessages = async () => {
+          const result = await axios.get("/api/message/" + currentChat._id);
+          setMessages(result.data);
+        };
+        fetchMessages();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [currentChat]);
+
   return (
     <>
       <Topbar />
@@ -17,32 +53,42 @@ export default function Messenger() {
               placeholder="Search for friends"
               className="messengerSearch"
             />
-            <MessengerFriend />
-            <MessengerFriend />
-            <MessengerFriend />
-            <MessengerFriend />
+            {conversations.map((c) => (
+              <div key={c._id} onClick={() => setCurrentChat(c)}>
+                <MessengerConversation conversation={c} currentUser={user} />
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="messengerBox">
-          <div className="messengerBoxWrapper">
-            <div className="boxTop">
-              <Conversation />
-              <Conversation owen />
-              <Conversation />
-              <Conversation />
+          {currentChat ? (
+            <div className="messengerBoxWrapper">
+              <div className="boxTop">
+                {messages.map((message) => (
+                  <Conversation
+                    key={message._id}
+                    message={message}
+                    owen={message.sender === user._id}
+                  />
+                ))}
+              </div>
+              <div className="boxBottom">
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="10"
+                  className="messageTextArea"
+                ></textarea>
+                <button className="sendMessege">Send</button>
+              </div>
             </div>
-            <div className="boxBottom">
-              <textarea
-                name="message"
-                id="message"
-                cols="30"
-                rows="10"
-                className="messageTextArea"
-              ></textarea>
-              <button className="sendMessege">Send</button>
+          ) : (
+            <div className="openChatToStartConversation">
+              Open a conversation to start a chat !!!
             </div>
-          </div>
+          )}
         </div>
         <div className="messengerOnlineFriends">
           <div className="messengerOnlineFriendsWrapper">

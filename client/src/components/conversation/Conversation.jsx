@@ -1,6 +1,7 @@
 import "./conversation.css";
+import { format } from "timeago.js";
 
-export default function Conversation({ owen }) {
+export default function Conversation({ owen, message }) {
   return (
     <div className={owen ? "conversation owen" : "conversation"}>
       <div className="conversationTop">
@@ -9,11 +10,9 @@ export default function Conversation({ owen }) {
           alt=""
           className="conversationImg"
         />
-        <p className="conversationText">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-        </p>
+        <p className="conversationText">{message.text}</p>
       </div>
-      <div className="conversationBottom">1 hour ago</div>
+      <div className="conversationBottom">{format(message.createdAt)}</div>
     </div>
   );
 }

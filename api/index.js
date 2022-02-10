@@ -29,11 +29,15 @@ mongoose
 const authRoutes = require("./routes/auth");
 const usersRoutes = require("./routes/users");
 const postsRoutes = require("./routes/posts");
+const conversationRoutes = require("./routes/conversation");
+const messageRoutes = require("./routes/message");
 
 //middlwars
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/posts", postsRoutes);
+app.use("/api/conversation", conversationRoutes);
+app.use("/api/message", messageRoutes);
 
 //upload file
 
