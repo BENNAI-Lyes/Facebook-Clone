@@ -4,10 +4,11 @@ import { useState } from "react";
 import "./oFriend.css";
 
 export default function OFriend({
-  onlineFriends,
+  onlineUsers,
   currentUserId,
   setCurrentChat,
 }) {
+  const PF = process.env.REACT_APP_ASSETS;
   const [followings, setFollowings] = useState([]);
   const [onlineFollowings, setOnlineFollowings] = useState([]);
 
@@ -23,19 +24,44 @@ export default function OFriend({
     }
   }, [currentUserId]);
 
+  useEffect(() => {
+    setOnlineFollowings(followings.filter((f) => onlineUsers.includes(f._id)));
+  }, [followings, onlineUsers]);
+
+  const handelClick = async (user) => {
+    try {
+      const res = await axios.get(
+        `/api/conversation/find/${user._id}/${currentUserId}`
+      );
+      setCurrentChat(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
-      <div className="onlineFriend">
-        <div className="onlineFriendLeft">
-          <img
-            src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="onlineFriendImg"
-          />
-          <div className="onlineFriendBadge" />
+      {onlineFollowings.map((o) => (
+        <div
+          className="onlineFriend"
+          key={o._id}
+          onClick={() => handelClick(o)}
+        >
+          <div className="onlineFriendLeft">
+            <img
+              src={
+                o.profilePicture
+                  ? PF + o.profilePicture
+                  : PF + "person/noavatar.webp"
+              }
+              alt=""
+              className="onlineFriendImg"
+            />
+            <div className="onlineFriendBadge" />
+          </div>
+          <div className="onlineFriendRight">{o.username}</div>
         </div>
-        <div className="onlineFriendRight">La la</div>
-      </div>
+      ))}
     </div>
   );
 }

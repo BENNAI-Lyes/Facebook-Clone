@@ -26,7 +26,7 @@ export default function Messenger() {
   useEffect(() => {
     socket.current?.emit("addUser", user._id);
     socket.current?.on("getUsers", (users) => {
-      setOnlineFriends(users);
+      setOnlineFriends(users.map((u) => u.userId));
     });
   }, [user]);
 
@@ -161,7 +161,7 @@ export default function Messenger() {
         <div className="messengerOnlineFriends">
           <div className="messengerOnlineFriendsWrapper">
             <OFriend
-              onlineFriends={onlineFriends}
+              onlineUsers={onlineFriends}
               currentUserId={user._id}
               setCurrentChat={setCurrentChat}
             />
