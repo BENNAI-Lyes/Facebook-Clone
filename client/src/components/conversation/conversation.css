@@ -18,11 +18,11 @@
 }
 
 .conversationText {
-  background-color: #eeedec;
+  color: #fff;
+  background-color: #0111b6;
   padding: 10px;
   border-radius: 20px;
   line-height: 1.5;
-  color: #555;
   max-width: 400px;
   margin: 0 10px;
 }
@@ -37,4 +37,9 @@
 
 .conversation.owen .conversationImg {
   order: 2;
+}
+
+.conversation.owen .conversationText {
+  background-color: #eeedec;
+  color: #555;
 }

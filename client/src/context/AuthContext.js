@@ -2,7 +2,8 @@ import { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  user: {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  /*{
     _id: "620274da618be28a870b864c",
     username: "lala",
     email: "lala@gmail.com",
@@ -14,7 +15,7 @@ const INITIAL_STATE = {
     desc: "",
     city: "",
     from: "",
-  },
+  }*/
   isFetching: false,
   error: false,
 };

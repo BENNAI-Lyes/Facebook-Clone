@@ -4,7 +4,7 @@ import "./messengerConversation.css";
 
 export default function MessengerConversation({ conversation, currentUser }) {
   const PF = process.env.REACT_APP_ASSETS;
-  const [user, SetUser] = useState({});
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     try {
@@ -14,7 +14,7 @@ export default function MessengerConversation({ conversation, currentUser }) {
             (id) => id !== currentUser._id
           )}`
         );
-        SetUser(res.data);
+        setUser(res.data);
       };
       fetchUser();
     } catch (error) {

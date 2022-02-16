@@ -1,0 +1,28 @@
+.onlineFriend {
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.onlineFriend:hover {
+  background-color: #eeedec;
+}
+
+.onlineFriendLeft {
+  position: relative;
+  margin-right: 20px;
+}
+
+.onlineFriendImg {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.onlineFriendRight {
+  font-weight: 500;
+}
