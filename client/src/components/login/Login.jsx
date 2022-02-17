@@ -1,5 +1,5 @@
 import "./login.css";
-import { useRef, useContext, useEffect } from "react";
+import { useRef, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { CircularProgress } from "@material-ui/core";
@@ -11,7 +11,7 @@ export default function Login() {
   const email = useRef();
   const password = useRef();
 
-  const { user, dispatch, error, isFetching } = useContext(AuthContext);
+  const { dispatch, isFetching } = useContext(AuthContext);
 
   const handelSubmit = (e) => {
     e.preventDefault();

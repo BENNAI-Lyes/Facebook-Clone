@@ -16,23 +16,27 @@ export default function Rightbar({ user }) {
     currentUser.followings.includes(user?._id)
   );
 
+  useEffect(() => {
+    setIsFollowed(currentUser.followings.includes(user?._id));
+  }, [currentUser, user]);
+
   const handelFollowClick = async () => {
-    setIsFollowed(!isFollowed);
     try {
       if (isFollowed) {
         await axios.put("/api/users/" + user._id + "/unfollow", {
           userId: currentUser._id,
         });
-        dispatch({ type: "FOLLOW", payload: user._id });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
         await axios.put("/api/users/" + user._id + "/follow", {
           userId: currentUser._id,
         });
-        dispatch({ type: "UNFOLLOW", payload: user._id });
+        dispatch({ type: "FOLLOW", payload: user._id });
       }
     } catch (error) {
       console.log(error);
     }
+    setIsFollowed(!isFollowed);
   };
 
   return (
