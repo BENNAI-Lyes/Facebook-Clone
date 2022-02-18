@@ -20,12 +20,6 @@ Building facebook application clone using React and Node. This build covers the 
     - Socket.io
 
 
-## Demo
-
-Insert gif or link to demo
-
-
-
 
 # Installation
 ### Pre-requisites 
